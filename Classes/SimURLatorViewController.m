@@ -38,6 +38,10 @@
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  return YES;
+}
+
 - (void)didReceiveMemoryWarning {
   // Releases the view if it doesn't have a superview.
   [super didReceiveMemoryWarning];
@@ -47,7 +51,6 @@
 - (void)viewDidUnload {
   [self setUrlField:nil];
 }
-
 
 - (void)dealloc {
     [super dealloc];
