@@ -3,14 +3,18 @@
 //  SimURLator
 //
 //  Created by hume on 10/9/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright ThoughtWorks 2009. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface SimURLatorViewController : UIViewController {
-
+ @private
+  UITextField *_urlField;
 }
 
-@end
+@property (nonatomic, retain) IBOutlet UITextField *urlField;
+- (IBAction)checkURL;
+- (IBAction)openURL;
 
+@end

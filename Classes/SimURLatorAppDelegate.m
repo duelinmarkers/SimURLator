@@ -3,7 +3,7 @@
 //  SimURLator
 //
 //  Created by hume on 10/9/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright ThoughtWorks 2009. All rights reserved.
 //
 
 #import "SimURLatorAppDelegate.h"
@@ -15,11 +15,19 @@
 @synthesize viewController;
 
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
-    // Override point for customization after app launch    
-    [window addSubview:viewController.view];
-    [window makeKeyAndVisible];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)options {
+  [window addSubview:viewController.view];
+  [window makeKeyAndVisible];
+  if (options != nil) {
+    NSURL *url = (NSURL *)[options objectForKey:UIApplicationLaunchOptionsURLKey];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Incoming URL" 
+                                                        message:[url absoluteString] 
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK" 
+                                              otherButtonTitles:nil];
+    [alertView show];
+  }
+  return YES;
 }
 
 

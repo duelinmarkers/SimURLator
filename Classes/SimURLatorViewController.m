@@ -3,58 +3,49 @@
 //  SimURLator
 //
 //  Created by hume on 10/9/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright ThoughtWorks 2009. All rights reserved.
 //
 
 #import "SimURLatorViewController.h"
 
 @implementation SimURLatorViewController
 
+@synthesize urlField = _urlField;
 
-
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
+- (IBAction)checkURL {
+  NSString *urlString = [_urlField text];
+  NSLog(@"Checking URL: %@", urlString);
+  NSString *message;
+  NSString *title;
+  if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:urlString]]) {
+    title = @"Yes!";
+    message = @"Can open URL! :)";
+  } else {
+    title = @"No!";
+    message = @"Cannot open URL. :(";
+  }
+  UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:title 
+                                                       message:message 
+                                                      delegate:nil 
+                                             cancelButtonTitle:@"OK" 
+                                             otherButtonTitles:nil] autorelease];
+  [alertView show];
 }
-*/
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
+- (IBAction)openURL {
+  NSString *urlString = [_urlField text];
+  NSLog(@"Opening URL: %@", urlString);
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
-*/
-
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-*/
-
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
+  // Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+  [self setUrlField:nil];
 }
 
 
