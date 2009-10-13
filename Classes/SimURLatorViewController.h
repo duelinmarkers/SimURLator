@@ -1,10 +1,4 @@
-//
-//  SimURLatorViewController.h
-//  SimURLator
-//
-//  Created by hume on 10/9/09.
-//  Copyright ThoughtWorks 2009. All rights reserved.
-//
+// Copyright 2009 ThoughtWorks, Inc. See License.txt for licensing info.
 
 #import <UIKit/UIKit.h>
 

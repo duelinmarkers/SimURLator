@@ -57,3 +57,7 @@ Here's the section of SimURLator-Info.plist you should modify:
 If you're using XCode, note that it will probably label those keys 
 "URL types" and "URL Schemes."
 
+
+---
+
+Copyright 2009 ThoughtWorks, Inc. See License.txt for licensing info.
