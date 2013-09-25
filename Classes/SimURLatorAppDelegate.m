@@ -9,19 +9,30 @@
 @synthesize viewController;
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)options {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)options
+{
   [window addSubview:viewController.view];
   [window makeKeyAndVisible];
-  if (options != nil) {
-    NSURL *url = (NSURL *)[options objectForKey:UIApplicationLaunchOptionsURLKey];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Incoming URL" 
-                                                        message:[url absoluteString] 
-                                                       delegate:nil 
-                                              cancelButtonTitle:@"OK" 
+  return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    [self handleLaunchURL:url];
+    return YES;
+}
+
+-(void) handleLaunchURL:(NSURL*)url
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Incoming URL"
+                                                        message:[url absoluteString]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
     [alertView show];
-  }
-  return YES;
 }
 
 - (void)dealloc {
